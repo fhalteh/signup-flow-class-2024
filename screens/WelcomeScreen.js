@@ -7,8 +7,9 @@ import {
   SafeAreaView,
   Button,
 } from "react-native";
+import CustomButton, { ButtonType } from "../components/CustomButton";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topContainer}>
@@ -20,8 +21,8 @@ export default function WelcomeScreen() {
         <Text style={styles.text}>DIS students</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button title="Create a free account" />
-        <Button title="Login" />
+        <CustomButton title="Create a free account" type={ButtonType.PRIMARY} onPress={() => navigation.navigate("Name")}/>
+        <CustomButton title="Login" type={ButtonType.SECONDARY}/>
       </View>
     </SafeAreaView>
   );
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   container: {
+    backgroundColor: "white",
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
@@ -44,8 +46,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     color: "#191259",
+    fontWeight: "bold",
+    textTransform: "uppercase",
   },
   buttonContainer: {
     width: "100%",
+    paddingHorizontal: 16,
+    height: 126,
+    justifyContent: "space-between",
   },
 });
